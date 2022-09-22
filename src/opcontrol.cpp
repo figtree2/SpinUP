@@ -3,6 +3,6 @@
 
 
 void opcontrol() {
-	Robot::start_task("Display", Robot::display);
 	Robot::start_task("Driver", Robot::driveControl);
+	Robot::start_task("odom", Robot::odometry);
 }

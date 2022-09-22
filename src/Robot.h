@@ -26,10 +26,12 @@ public:
   static Motor Intake;
   static pros::GPS GPSSensor;
   static std::atomic<double> x;
+  static std::atomic<double> y;
   static IMU InertialSensor;
 
   static double turn_offset_y;
   static double turn_offset_x;
+  static double turn_offset;
 
 
   static PD power_PD;
@@ -37,6 +39,9 @@ public:
   static PD turn_PD;
 
   static ADIDigitalOut pneumatics;
+  static pros::c::adi_encoder_t LeftEncoder;
+  static pros::c::adi_encoder_t RightEncoder;
+    static pros::c::adi_encoder_t BackEncoder;
 
 
   static std::map<std::string, std::unique_ptr<pros::Task>> tasks;
