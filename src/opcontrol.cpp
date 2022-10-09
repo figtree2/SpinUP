@@ -4,6 +4,7 @@
 
 void initialize() {
 	pros::lcd::initialize();
+	Robot::InertialSensor.reset();
 }
 void opcontrol() {
 	Robot::start_task("Odom", Robot::odometry);
