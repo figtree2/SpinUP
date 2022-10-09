@@ -14,8 +14,8 @@ public:
 
   double prev_error;
   int prev_time;
-  double d;
-  int counterreset;
+  double D;
+  int counter_reset;
 
   PD(double p, double d, double min=0, int counter=100);
 

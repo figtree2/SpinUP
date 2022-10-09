@@ -29,8 +29,8 @@ public:
   static std::atomic<double> y;
   static IMU InertialSensor;
 
-  static double turn_offset_y;
-  static double turn_offset_x;
+  static atomic<double> turn_offset_y;
+  static atomic<double> turn_offset_x;
   static double turn_offset;
 
 
@@ -39,25 +39,32 @@ public:
   static PD turn_PD;
 
   static ADIDigitalOut pneumatics;
-  static pros::c::adi_encoder_t LeftEncoder;
-  static pros::c::adi_encoder_t RightEncoder;
-    static pros::c::adi_encoder_t BackEncoder;
+static ADIEncoder LeftEncoder;
+static ADIEncoder RightEncoder;
+  static ADIEncoder BackEncoder;
 
 
   static std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 
   static void odometry(void *ptr);
-  static void move_to(vector<double> position, vector<double> margins= {1,1,1}, vector<double> speeds = {1, 1, 1}, bool pure_pursuit=false);
+  static void move_to(std::vector<double> pose, double stop_threshold = .1, bool pure_pursuit = false, int flipout_timer = 0, std::vector<double> speeds = {1, 1, 1});
 
 
   static void start_task(string s, void(*func)(void *));
   static void end_task(string s);
   static bool task_exists(string s);
 
+  static void reset_PD();
+  static void brake(string mode);
+
   static void display(void *ptr);
+  static void driveOdom(int power, int turn, int strafe);
   static void drive(int power, int turn, int strafe);
   static void driveControl(void *ptr);
   static void autonomous();
+
+  static void spin(void *ptr);
+  static void shoot();
 
 };
 
