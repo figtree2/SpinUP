@@ -19,6 +19,9 @@ public:
   static Motor RightBackWheel;
   static Motor LeftFrontWheel;
   static Motor RightFrontWheel;
+  static Motor LeftMiddleWheel;
+  static Motor RightMiddleWheel;
+  static Motor Catapult;
 
   static Motor ShooterOne;
   static Motor ShooterTwo;
@@ -43,6 +46,8 @@ static ADIEncoder LeftEncoder;
 static ADIEncoder RightEncoder;
   static ADIEncoder BackEncoder;
 
+  static ADIDigitalIn limit_switch;
+
 
   static std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 
@@ -62,6 +67,9 @@ static ADIEncoder RightEncoder;
   static void drive(int power, int turn, int strafe);
   static void driveControl(void *ptr);
   static void autonomous();
+
+  static void windUp(void *ptr);
+  static void rel(void *ptr);
 
   static void spin(void *ptr);
   static void shoot();
